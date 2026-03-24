@@ -1,196 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eevee Printers</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eevee Printers</title>
 
-    body {
-      background: #0c0f1d;
-      color: white;
-      padding: 20px;
-    }
+<style>
+body {
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background:#0b1220;
+    color:white;
+}
 
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+/* HERO */
+.hero {
+    height:90vh;
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)), url('bg.jpg');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
 
-    header h1 {
-      font-size: 3em;
-      color: #f7b731;
-    }
+.logo {
+    width:200px;
+    margin-bottom:20px;
+}
 
-    header h2 {
-      font-size: 1.2em;
-      color: #91a3ff;
-      margin-top: 10px;
-    }
+.hero p {
+    color:#ddd;
+}
 
-    h3 {
-      text-align: center;
-      font-size: 1.8em;
-      color: #ffd36f;
-      margin-bottom: 30px;
-    }
+.hero button {
+    margin-top:20px;
+    padding:12px 25px;
+    background:#FFD700;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
 
-    .catalog {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 20px;
-    }
+/* SECTION */
+.section-title {
+    text-align:center;
+    margin:40px 0;
+    font-size:28px;
+}
 
-    .card {
-      background: #1c2236;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s;
-    }
+/* CARDS */
+.container {
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:20px;
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
-    }
+.card {
+    background:#1c2742;
+    border-radius:12px;
+    overflow:hidden;
+    transition:0.3s;
+    cursor:pointer;
+}
 
-    .card h4 {
-      margin-bottom: 10px;
-    }
+.card img {
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
 
-    .card button {
-      background: #ffd36f;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
+.card h3 {
+    text-align:center;
+    padding:15px;
+}
 
-    .card button:hover {
-      background: #ffcc00;
-    }
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow:0 10px 20px rgba(0,0,0,0.5);
+}
 
-    .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #1c2236;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-      z-index: 10;
-      display: none;
-      width: 90%;
-      max-width: 400px;
-    }
+/* POPUP */
+.popup {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+}
 
-    .popup input, .popup textarea {
-      width: 100%;
-      margin-bottom: 15px;
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-    }
+.popup-content {
+    background:white;
+    color:black;
+    padding:20px;
+    margin:10% auto;
+    width:300px;
+    border-radius:10px;
+    text-align:center;
+}
 
-    .popup button {
-      background: #ffd36f;
-      padding: 10px;
-      width: 100%;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      display: none;
-      z-index: 5;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2em;
-      }
-    }
-  </style>
+/* FOOTER */
+footer {
+    background:#111;
+    padding:30px;
+    text-align:center;
+    margin-top:40px;
+}
+</style>
 </head>
+
 <body>
-  <header>
-    <h1>Eevee Printers</h1>
-    <h2>Premium Printing & Packaging</h2>
-  </header>
 
-  <h3>Our Catalogue</h3>
-  <div class="catalog" id="catalog"></div>
+<!-- HERO -->
+<div class="hero">
+    <img src="logo.png" class="logo">
+    <p>Premium Printing & Packaging Solutions</p>
+    <button onclick="scrollToServices()">Explore Services</button>
+</div>
 
-  <div class="overlay" id="overlay"></div>
-  <div class="popup" id="orderPopup">
-    <h3 id="popupTitle"></h3>
-    <input type="text" placeholder="Your Name" id="custName" />
-    <input type="number" placeholder="Quantity" id="quantity" />
-    <textarea placeholder="Description / Requirements" rows="4" id="description"></textarea>
-    <button onclick="submitOrder()">Submit Order</button>
-  </div>
+<h2 class="section-title">Our Services</h2>
 
-  <script>
-    const items = [
-      'Visiting Cards', 'Box Making', 'Hospital Files', 'Paper Bags', 'Brouchers / Pamplets', 'Plastic Carry Bag Covers',
-      'Stickers', 'Envelopes', 'Danglers', 'Books', 'ID Cards', 'Pouches', 'Bill Books', 'Restaurant Tray Mats', 'T-shirt Printing'
-    ];
+<!-- SERVICES -->
+<div class="container">
 
-    const catalog = document.getElementById('catalog');
-    const overlay = document.getElementById('overlay');
-    const popup = document.getElementById('orderPopup');
-    const popupTitle = document.getElementById('popupTitle');
-    let currentItem = '';
+<div class="card" onclick="openTypes('Visiting Cards')">
+<img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07">
+<h3>Visiting Cards</h3>
+</div>
 
-    items.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
-        <h4>${item}</h4>
-        <button onclick="openPopup('${item}')">Order Now</button>
-      `;
-      catalog.appendChild(card);
-    });
+<div class="card" onclick="openTypes('Stickers')">
+<img src="https://images.unsplash.com/photo-1593032465175-481ac7f401a0">
+<h3>Stickers</h3>
+</div>
 
-    function openPopup(item) {
-      currentItem = item;
-      popupTitle.innerText = `Order: ${item}`;
-      overlay.style.display = 'block';
-      popup.style.display = 'block';
-    }
+<div class="card" onclick="openTypes('Books')">
+<img src="https://images.unsplash.com/photo-1512820790803-83ca734da794">
+<h3>Books</h3>
+</div>
 
-    overlay.onclick = () => {
-      overlay.style.display = 'none';
-      popup.style.display = 'none';
-    };
+<div class="card" onclick="openTypes('Paper Bags')">
+<img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519">
+<h3>Paper Bags</h3>
+</div>
 
-    function submitOrder() {
-      const name = document.getElementById('custName').value;
-      const quantity = document.getElementById('quantity').value;
-      const description = document.getElementById('description').value;
+</div>
 
-      const message = `Order for: ${currentItem}%0AName: ${name}%0AQuantity: ${quantity}%0ADescription: ${description}`;
-      const whatsapp = '91XXXXXXXXXX'; // Replace with your number
-      window.open(`https://wa.me/${whatsapp}?text=${message}`);
-    }
-  </script>
+<!-- TYPE POPUP -->
+<div class="popup" id="typePopup">
+<div class="popup-content">
+<h3 id="productTitle"></h3>
+<button onclick="selectType('Standard')">Standard</button><br><br>
+<button onclick="selectType('Premium')">Premium</button><br><br>
+<button onclick="closePopup()">Close</button>
+</div>
+</div>
+
+<!-- FORM POPUP -->
+<div class="popup" id="formPopup">
+<div class="popup-content">
+<h3>Order Details</h3>
+
+<input placeholder="Quantity" id="qty"><br><br>
+<input placeholder="GSM" id="gsm"><br><br>
+<input placeholder="Details" id="details"><br><br>
+
+<button onclick="sendWhatsApp()">Submit</button>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<h3>Contact Us</h3>
+<p>📍 Hyderabad</p>
+<p>📞 +91 9999999999</p>
+<p>📧 eeveeprinters@gmail.com</p>
+</footer>
+
+<script>
+let product="", type="";
+
+function scrollToServices(){
+    window.scrollTo({top:600,behavior:'smooth'});
+}
+
+function openTypes(p){
+    product=p;
+    document.getElementById("productTitle").innerText=p;
+    document.getElementById("typePopup").style.display="block";
+}
+
+function selectType(t){
+    type=t;
+    document.getElementById("typePopup").style.display="none";
+    document.getElementById("formPopup").style.display="block";
+}
+
+function closePopup(){
+    document.getElementById("typePopup").style.display="none";
+    document.getElementById("formPopup").style.display="none";
+}
+
+function sendWhatsApp(){
+    let msg=`Order Request:
+Product: ${product}
+Type: ${type}
+Quantity: ${qty.value}
+GSM: ${gsm.value}
+Details: ${details.value}`;
+
+    window.open("https://wa.me/919999999999?text="+encodeURIComponent(msg));
+}
+</script>
+
 </body>
 </html>
