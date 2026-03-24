@@ -5,18 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eevee Printers</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 body {
     margin:0;
-    font-family: 'Segoe UI', sans-serif;
-    background:#0b1220;
+    font-family: 'Poppins', sans-serif;
+    background:#0a0f1f;
     color:white;
 }
 
 /* HERO */
 .hero {
-    height:90vh;
-    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)), url('bg.jpg');
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+    url('https://github.com/Sharangoud44/Eevee-Printers-Website/blob/main/modern-printing-factory-with-industrial-equipment-and-workers-in-production-environment-photo.jpg');
     background-size:cover;
     background-position:center;
     display:flex;
@@ -26,46 +30,64 @@ body {
     text-align:center;
 }
 
+/* LOGO */
 .logo {
-    width:200px;
+    width:220px;
     margin-bottom:20px;
+    border-radius:12px;
+    mix-blend-mode: lighten;
+}
+
+/* TEXT */
+.hero h1 {
+    font-size:50px;
+    color:#FFD700;
+    text-shadow:0 0 25px rgba(255,215,0,0.6);
 }
 
 .hero p {
-    color:#ddd;
+    color:#ccc;
 }
 
+/* BUTTON */
 .hero button {
     margin-top:20px;
-    padding:12px 25px;
-    background:#FFD700;
+    padding:14px 30px;
+    background:linear-gradient(45deg,#FFD700,#ffb300);
     border:none;
-    border-radius:6px;
+    border-radius:8px;
+    font-weight:600;
     cursor:pointer;
-    font-weight:bold;
+    transition:0.3s;
+}
+
+.hero button:hover {
+    transform:scale(1.1);
 }
 
 /* SECTION */
 .section-title {
     text-align:center;
-    margin:40px 0;
-    font-size:28px;
+    margin:60px 0 20px;
+    font-size:32px;
 }
 
 /* CARDS */
 .container {
     display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-    padding:20px;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+    padding:30px;
 }
 
 .card {
-    background:#1c2742;
-    border-radius:12px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border-radius:15px;
     overflow:hidden;
-    transition:0.3s;
+    transition:0.4s;
     cursor:pointer;
+    border:1px solid rgba(255,255,255,0.1);
 }
 
 .card img {
@@ -80,37 +102,35 @@ body {
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow:0 10px 20px rgba(0,0,0,0.5);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow:0 20px 40px rgba(0,0,0,0.6);
 }
 
 /* POPUP */
 .popup {
     display:none;
     position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.7);
+    top:0;left:0;
+    width:100%;height:100%;
+    background:rgba(0,0,0,0.8);
 }
 
 .popup-content {
     background:white;
     color:black;
-    padding:20px;
+    padding:25px;
     margin:10% auto;
-    width:300px;
-    border-radius:10px;
+    width:320px;
+    border-radius:12px;
     text-align:center;
 }
 
 /* FOOTER */
 footer {
-    background:#111;
-    padding:30px;
+    background:#050814;
+    padding:40px;
     text-align:center;
-    margin-top:40px;
+    margin-top:50px;
 }
 </style>
 </head>
@@ -120,6 +140,7 @@ footer {
 <!-- HERO -->
 <div class="hero">
     <img src="eevee.png" class="logo">
+    <h1>Eevee Printers</h1>
     <p>Premium Printing & Packaging Solutions</p>
     <button onclick="scrollToServices()">Explore Services</button>
 </div>
@@ -176,7 +197,7 @@ footer {
 
 <!-- FOOTER -->
 <footer>
-<h3>Contact Us</h3>
+<h2>Eevee Printers</h2>
 <p>📍 Hyderabad</p>
 <p>📞 +91 9999999999</p>
 <p>📧 eeveeprinters@gmail.com</p>
@@ -186,7 +207,7 @@ footer {
 let product="", type="";
 
 function scrollToServices(){
-    window.scrollTo({top:600,behavior:'smooth'});
+    window.scrollTo({top:window.innerHeight,behavior:'smooth'});
 }
 
 function openTypes(p){
