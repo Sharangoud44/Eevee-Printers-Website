@@ -10,7 +10,7 @@
 <style>
 body {
     margin:0;
-    font-family: 'Poppins', sans-serif;
+    font-family:'Poppins',sans-serif;
     background:#0a0f1f;
     color:white;
 }
@@ -20,7 +20,7 @@ body {
     height:100vh;
     background:
     linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-    url('https://github.com/Sharangoud44/Eevee-Printers-Website/blob/main/modern-printing-factory-with-industrial-equipment-and-workers-in-production-environment-photo.jpg');
+    url('https://raw.githubusercontent.com/Sharangoud44/Eevee-Printers-Website/main/modern-printing-factory-with-industrial-equipment-and-workers-in-production-environment-photo.jpg')
     background-size:cover;
     background-position:center;
     display:flex;
@@ -34,8 +34,8 @@ body {
 .logo {
     width:220px;
     margin-bottom:20px;
-    border-radius:12px;
     mix-blend-mode: lighten;
+    filter: drop-shadow(0 0 10px rgba(255,215,0,0.5));
 }
 
 /* TEXT */
@@ -125,6 +125,13 @@ body {
     text-align:center;
 }
 
+/* INPUT */
+.popup-content input {
+    width:90%;
+    padding:8px;
+    margin:5px 0;
+}
+
 /* FOOTER */
 footer {
     background:#050814;
@@ -187,11 +194,12 @@ footer {
 <div class="popup-content">
 <h3>Order Details</h3>
 
-<input placeholder="Quantity" id="qty"><br><br>
-<input placeholder="GSM" id="gsm"><br><br>
+<input placeholder="Quantity" id="qty"><br>
+<input placeholder="GSM" id="gsm"><br>
 <input placeholder="Details" id="details"><br><br>
 
-<button onclick="sendWhatsApp()">Submit</button>
+<button onclick="sendWhatsApp()">Submit</button><br><br>
+<button onclick="closePopup()">Close</button>
 </div>
 </div>
 
